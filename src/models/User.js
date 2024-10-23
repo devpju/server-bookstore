@@ -1,6 +1,6 @@
 import { DataTypes } from 'sequelize';
 import sequelize from '../config/sequelize.js';
-import { GENDER, VERIFY } from '../constants/model.js';
+import { GENDER, VERIFY } from '../constants/modelEnums.js';
 
 const User = sequelize.define(
   'User',
@@ -14,6 +14,15 @@ const User = sequelize.define(
       allowNull: false,
       unique: true
     },
+    phoneNumber: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true
+    },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
     dob: {
       type: DataTypes.DATEONLY,
       allowNull: false
@@ -22,11 +31,6 @@ const User = sequelize.define(
       type: DataTypes.ENUM,
       values: GENDER,
       allowNull: false
-    },
-    phoneNumber: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true
     },
     urlAvatar: {
       type: DataTypes.STRING

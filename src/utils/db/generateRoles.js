@@ -1,4 +1,4 @@
-import { ROLE_NAMES } from '../../constants/model.js';
+import { ROLE_NAMES } from '../../constants/modelEnums.js';
 import Role from '../../models/Role.js';
 
 const generateRoles = async () => {

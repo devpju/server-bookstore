@@ -1,6 +1,6 @@
 import { DataTypes } from 'sequelize';
 import sequelize from '../config/sequelize.js';
-import { ROLE_NAMES } from '../constants/model.js';
+import { ROLE_NAMES } from '../constants/modelEnums.js';
 
 const Role = sequelize.define('Role', {
   name: {

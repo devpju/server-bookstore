@@ -7,6 +7,8 @@ import setAssociations from './models/associations.js';
 import generateRoles from './utils/db/generateRoles.js';
 import authenticateDatabase from './utils/db/authenticateDB.js';
 import syncDatabase from './utils/db/syncDB.js';
+import authRoute from './routes/authRoute.js';
+import { errorHandlingMiddleware } from './middlewares/errorHandlingMiddleware.js';
 
 dotenv.config();
 
@@ -15,7 +17,6 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
-
 const handleDB = async () => {
   try {
     await authenticateDatabase();
@@ -27,6 +28,12 @@ const handleDB = async () => {
     throw error;
   }
 };
+
+app.use('/auth', authRoute);
+
+//router
+
+app.use(errorHandlingMiddleware);
 
 const startServer = async () => {
   try {
